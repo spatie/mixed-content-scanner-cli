@@ -1,4 +1,6 @@
-# Very short description of the package
+**WORK IN PROGRESS, DO NOT USE YET**
+
+# A cli tool to check sites for mixed content
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/mixed-content-scanner-cli.svg?style=flat-square)](https://packagist.org/packages/spatie/mixed-content-scanner-cli)
 [![Build Status](https://img.shields.io/travis/spatie/mixed-content-scanner-cli/master.svg?style=flat-square)](https://travis-ci.org/spatie/mixed-content-scanner-cli)
@@ -6,9 +8,19 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/mixed-content-scanner-cli.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/mixed-content-scanner-cli)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/mixed-content-scanner-cli.svg?style=flat-square)](https://packagist.org/packages/spatie/mixed-content-scanner-cli)
 
-**Note:** Replace ```Freek Van der Herten``` ```freekmurze``` ```freek@spatie.be``` ```mixed-content-scanner-cli``` ```A tool to scan sites for mixed content``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line.
+This repo contains a tool called `mixed-content-scanner` that can help you find pieces of mixed content on your site. This is how you can use it:
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+```bash
+mixed-content-scanner scan https://spatie.be
+```
+
+And of course our company site reports no mixed content.
+
+[TO DO: add image]
+
+Here's an example of a local test server that does contain some mixed content
+
+[TO DO: add image]
 
 ## Postcardware
 
