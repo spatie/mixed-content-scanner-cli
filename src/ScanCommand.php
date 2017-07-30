@@ -30,6 +30,6 @@ class ScanCommand extends Command
         $mixedContentLogger = new MixedContentLogger($styledOutput);
 
         (new MixedContentScanner($mixedContentLogger))
-            ->scan($input->getArgument('url'));
+            ->scan($scanUrl);
     }
 }
