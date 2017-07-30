@@ -25,7 +25,7 @@ class ScanCommand extends Command
 
         $styledOutput =  new SymfonyStyle($input, $output);
 
-        $styledOutput->title("Start scanning {$scanUrl} for mixedContent");
+        $styledOutput->title("Start scanning {$scanUrl} for mixed content");
 
         $mixedContentLogger = new MixedContentLogger($styledOutput);
 
