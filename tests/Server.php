@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\MixedContentScanner\Test;
+namespace Spatie\MixedContentScannerCli\Test;
 
 use GuzzleHttp\Client;
 
