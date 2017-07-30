@@ -6,6 +6,7 @@
 [![Build Status](https://img.shields.io/travis/spatie/mixed-content-scanner-cli/master.svg?style=flat-square)](https://travis-ci.org/spatie/mixed-content-scanner-cli)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/34497608-e63b-4814-93ac-f7af4d7a8ffa.svg?style=flat-square)](https://insight.sensiolabs.com/projects/34497608-e63b-4814-93ac-f7af4d7a8ffa)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/mixed-content-scanner-cli.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/mixed-content-scanner-cli)
+[![StyleCI](https://styleci.io/repos/98778969/shield?branch=master)](https://styleci.io/repos/98778969)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/mixed-content-scanner-cli.svg?style=flat-square)](https://packagist.org/packages/spatie/mixed-content-scanner-cli)
 
 This repo contains a tool called `mixed-content-scanner` that can help you find pieces of mixed content on your site. This is how you can use it:
