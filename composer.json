@@ -36,7 +36,10 @@
     "autoload-dev": {
         "psr-4": {
             "Spatie\\MixedContentScannerCli\\Test\\": "tests"
-        }
+        },
+        "files": [
+            "tests/helpers.php"
+        ]
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
