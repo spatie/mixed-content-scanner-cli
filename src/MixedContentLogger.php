@@ -46,7 +46,6 @@ class MixedContentLogger extends MixedContentObserver
 
     public function noMixedContentFound(Url $url)
     {
-        $message = $url.': ok';
         $this->log("{$url}: ok");
 
         $this->urlsWithoutMixedContent[] = $url;
