@@ -3,7 +3,11 @@
     "description": "A tool to scan sites for mixed content",
     "keywords": [
         "spatie",
-        "mixed-content-scanner-cli"
+        "mixed-content-scanner-cli",
+        "mixed-content",
+        "https",
+        "cli",
+        "tool"
     ],
     "homepage": "https://github.com/spatie/mixed-content-scanner-cli",
     "license": "MIT",
@@ -16,19 +20,20 @@
         }
     ],
     "require": {
-        "php": "^7.1"
+        "php": "^7.1",
+        "spatie/mixed-content-scanner": "^0.8.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.0"
+        "phpunit/phpunit": "^6.2"
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "Spatie\\MixedContentScannerCli\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Test\\": "tests"
+            "Spatie\\MixedContentScannerCli\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -36,15 +41,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
-            }
-        }
     }
 }
