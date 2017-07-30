@@ -19,7 +19,7 @@ And of course our company site reports no mixed content.
 
 [TO DO: add image]
 
-Here's an example of a local test server that does contain some mixed content
+Here's an example of a local test server that does contain some mixed content:
 
 [TO DO: add image]
 
@@ -33,25 +33,16 @@ We publish all received postcards [on our company website](https://spatie.be/en/
 
 ## Installation
 
-**Note:** Remove this paragraph if you are building a public package  
-This package is custom built for [Spatie](https://spatie.be) projects and is therefore not registered on packagist. In order to install it via composer you must specify this extra repository in `composer.json`:
-
-```json
-"repositories": [ { "type": "composer", "url": "https://satis.spatie.be/" } ]
-```
 
 You can install the package via composer:
 
 ```bash
-composer require spatie/mixed-content-scanner-cli
+composer global require spatie/mixed-content-scanner-cli
 ```
 
 ## Usage
 
-``` php
-$skeleton = new Spatie\Skeleton();
-echo $skeleton->echoPhrase('Hello, Spatie!');
-```
+TODO
 
 ## Changelog
 
