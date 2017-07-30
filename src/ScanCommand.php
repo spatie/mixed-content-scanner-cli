@@ -2,12 +2,12 @@
 
 namespace Spatie\MixedContentScannerCli;
 
-use Spatie\MixedContentScanner\MixedContentScanner;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
+use Spatie\MixedContentScanner\MixedContentScanner;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 class ScanCommand extends Command
 {
@@ -23,7 +23,7 @@ class ScanCommand extends Command
     {
         $scanUrl = $input->getArgument('url');
 
-        $styledOutput =  new SymfonyStyle($input, $output);
+        $styledOutput = new SymfonyStyle($input, $output);
 
         $styledOutput->title("Start scanning {$scanUrl} for mixed content");
 

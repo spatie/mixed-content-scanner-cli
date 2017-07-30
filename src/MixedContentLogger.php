@@ -4,8 +4,8 @@ namespace Spatie\MixedContentScannerCli;
 
 use Spatie\Crawler\Url;
 use Spatie\MixedContentScanner\MixedContent;
-use Spatie\MixedContentScanner\MixedContentObserver;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Spatie\MixedContentScanner\MixedContentObserver;
 
 class MixedContentLogger extends MixedContentObserver
 {
@@ -46,7 +46,7 @@ class MixedContentLogger extends MixedContentObserver
 
     public function noMixedContentFound(Url $url)
     {
-        $message = $url . ': ok';
+        $message = $url.': ok';
         $this->log("{$url}: ok");
 
         $this->urlsWithoutMixedContent[] = $url;
@@ -54,12 +54,12 @@ class MixedContentLogger extends MixedContentObserver
 
     public function finishedCrawling()
     {
-        $this->output->title("Scan results");
+        $this->output->title('Scan results');
 
         if (count($this->mixedContent)) {
-            $this->log("Found " . count($this->mixedContent) . " pieces of mixed content", 'error');
+            $this->log('Found '.count($this->mixedContent).' pieces of mixed content', 'error');
 
-            $mixedContentMessages = array_map(function(MixedContent $mixedContent) {
+            $mixedContentMessages = array_map(function (MixedContent $mixedContent) {
                 $foundOnUrl = $mixedContent->foundOnUrl;
                 $elementName = $mixedContent->elementName;
                 $mixedContentUrl = $mixedContent->mixedContentUrl;
@@ -71,11 +71,11 @@ class MixedContentLogger extends MixedContentObserver
         }
 
         if (count($this->nonResponsiveUrls)) {
-            $this->log("Found " . count($this->nonResponsiveUrls) . " non responsive url(s)", 'comment');
+            $this->log('Found '.count($this->nonResponsiveUrls).' non responsive url(s)', 'comment');
             $this->output->listing($this->nonResponsiveUrls);
         }
 
-        $this->log('Found ' . count($this->urlsWithoutMixedContent) . ' pages without mixed content');
+        $this->log('Found '.count($this->urlsWithoutMixedContent).' pages without mixed content');
 
         $this->output->newLine(1);
     }
