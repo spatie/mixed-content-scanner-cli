@@ -40,7 +40,7 @@ You can install the package via composer:
 composer global require spatie/mixed-content-scanner-cli
 ```
 
-## How it work under the hood
+## How it works under the hood
 
 When scanning a site, the tool will crawl every page. On all html retrieved, these elements and attributes will be checked:
 
