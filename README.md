@@ -40,6 +40,26 @@ You can install the package via composer:
 composer global require spatie/mixed-content-scanner-cli
 ```
 
+## How it work under the hood
+
+When scanning a site, the tool will crawl every page. On all html retrieved, these elements and attributes will be checked:
+
+- `audio`: `src`
+- `embed`: `src`
+- `form`: `action`
+- `link`: `href`
+- `iframe`: `src`
+- `img`: `src`, `srcset`
+- `object`: `data`
+- `param`: `value`
+- `script`: `src`
+- `source`: `src`, `srcset`
+- `video`: `src`
+
+If any of those attributes start with `http://` the element will be regarded as mixed content.
+
+The tool does not scan linked `.css` or `.js` files. Inline `<script>` or `<style>` are not taken into consideration.
+
 ## Usage
 
 You can scan a site by using the `scan` command followed by the url
@@ -47,6 +67,20 @@ You can scan a site by using the `scan` command followed by the url
 ```bash
 mixed-content-scanner scan https://example.com
 ```
+
+## Options
+
+### SSL verification
+
+You might want to check your site for mixed content before actually launching it.  It's quite common your site doesn't have an ssl certificate installed yet at that point. That's why by default the tool will not verify ssl certificates.
+
+If you want to turn on ssl verification just use the `verify-ssl option`
+
+```bash
+mixed-content-scanner scan https://self-signed.badssl.com/ --verify-ssl
+```
+
+That examples will result in non responding urls because the host does not have a valid ssl certificate
 
 ## Changelog
 

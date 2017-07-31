@@ -26,6 +26,22 @@ class MixedContentScannerTest extends TestCase
         $this->assertMatchesSnapshot(file_get_contents($this->logFile));
     }
 
+    /** @test */
+    public function it_will_not_verify_ssl_by_default()
+    {
+        exec("./mixed-content-scanner scan https://self-signed.badssl.com/ > {$this->logFile}");
+
+        $this->assertLogContains('Found 1 pages without mixed content');
+    }
+
+    /** @test */
+    public function it_has_an_option_to_enable_ssl_verification()
+    {
+        exec("./mixed-content-scanner scan --verify-ssl https://self-signed.badssl.com/ > {$this->logFile}");
+
+        $this->assertLogContains('Found 1 non responsive url(');
+    }
+
     protected function createLogFile()
     {
         if (file_exists($this->logFile)) {
@@ -33,5 +49,12 @@ class MixedContentScannerTest extends TestCase
         }
 
         touch($this->logFile);
+    }
+
+    public function assertLogContains($expectedString)
+    {
+        $logContents = file_get_contents($this->logFile);
+
+        $this->assertContains($expectedString, file_get_contents($this->logFile), "Failed asserting that `{$logContents}` contains the expected string `{$expectedString}`");
     }
 }
