@@ -8,7 +8,7 @@ class ConsoleApplication extends Application
 {
     public function __construct()
     {
-        parent::__construct('PHPUnit Watcher', '1.0.0');
+        parent::__construct('Mixed Content Scanner CLI', '1.0.0');
 
         $this->add(new ScanCommand());
     }
