@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": "^7.1",
-        "spatie/mixed-content-scanner": "^0.8.3",
+        "spatie/mixed-content-scanner": "dev-master",
         "symfony/console": "^3.0",
         "symfony/var-dumper": "^3.3"
     },

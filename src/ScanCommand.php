@@ -19,6 +19,8 @@ class ScanCommand extends Command
             ->setName('scan')
             ->setDescription('Scan a site for mixed content.')
             ->addArgument('url', InputArgument::REQUIRED, 'Which argument do you want to scan')
+            ->addOption('filter', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'urls whose path pass the regex will be scanned')
+            ->addOption('ignore', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'urls whose path pass the regex will not be scanned')
             ->addOption('verify-ssl', null, InputOption::VALUE_NONE, "Verify the craweld urls have a valid certificate. If they do not an empty response will be the result of the crawl");
     }
 
@@ -32,6 +34,19 @@ class ScanCommand extends Command
 
         $mixedContentLogger = new MixedContentLogger($styledOutput);
 
+        $crawlProfile = new CrawlProfile(
+            $input->getArgument('url'),
+            $input->getOption('filter'),
+            $input->getOption('ignore')
+        );
+
+        (new MixedContentScanner($mixedContentLogger))
+            ->setCrawlProfile($crawlProfile)
+            ->scan($scanUrl, $this->getClientOptions($input));
+    }
+
+    protected function getClientOptions(InputInterface $input): array
+    {
         $httpClientOptions = [
             RequestOptions::VERIFY => false,
             RequestOptions::COOKIES => true,
@@ -44,7 +59,6 @@ class ScanCommand extends Command
             $httpClientOptions[RequestOptions::VERIFY] = true;
         }
 
-        (new MixedContentScanner($mixedContentLogger))
-            ->scan($scanUrl, $httpClientOptions);
+        return $httpClientOptions;
     }
 }
