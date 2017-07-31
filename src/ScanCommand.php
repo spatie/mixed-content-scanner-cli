@@ -21,7 +21,7 @@ class ScanCommand extends Command
             ->addArgument('url', InputArgument::REQUIRED, 'Which argument do you want to scan')
             ->addOption('filter', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'urls whose path pass the regex will be scanned')
             ->addOption('ignore', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'urls whose path pass the regex will not be scanned')
-            ->addOption('verify-ssl', null, InputOption::VALUE_NONE, "Verify the craweld urls have a valid certificate. If they do not an empty response will be the result of the crawl");
+            ->addOption('verify-ssl', null, InputOption::VALUE_NONE, 'Verify the craweld urls have a valid certificate. If they do not an empty response will be the result of the crawl');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

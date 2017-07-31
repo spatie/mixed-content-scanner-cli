@@ -9,7 +9,7 @@ class MixedContentScannerTest extends TestCase
 {
     use MatchesSnapshots;
 
-    protected $logFile = __DIR__ . '/temp/log.txt';
+    protected $logFile = __DIR__.'/temp/log.txt';
 
     public function setUp()
     {
@@ -21,7 +21,7 @@ class MixedContentScannerTest extends TestCase
     /** @test */
     public function it_can_find_mixed_content()
     {
-        exec("./mixed-content-scanner scan http://" . Server::getServerUrl() . " > {$this->logFile}");
+        exec('./mixed-content-scanner scan http://'.Server::getServerUrl()." > {$this->logFile}");
 
         $this->assertMatchesSnapshot(file_get_contents($this->logFile));
     }
