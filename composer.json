@@ -26,7 +26,8 @@
         "symfony/var-dumper": "^3.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.2"
+        "phpunit/phpunit": "^6.2",
+        "spatie/phpunit-snapshot-assertions": "^1.0"
     },
     "autoload": {
         "psr-4": {

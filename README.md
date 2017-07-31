@@ -42,7 +42,11 @@ composer global require spatie/mixed-content-scanner-cli
 
 ## Usage
 
-TODO
+You can scan a site by using the `scan` command followed by the url
+
+```bash
+mixed-content-scanner scan https://example.com
+```
 
 ## Changelog
 
@@ -67,7 +71,7 @@ If you discover any security related issues, please email freek@spatie.be instea
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
-The scanner is inspired by [mixed-content-scan](https://github.com/bramus/mixed-content-scan) by [Bram Van Damme](https://github.com/bramus)
+The scanner is inspired by [mixed-content-scan](https://github.com/bramus/mixed-content-scan) by [Bram Van Damme](https://github.com/bramus). Parts of his readme and code were used.
 
 ## About Spatie
 

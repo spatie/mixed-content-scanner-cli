@@ -3,26 +3,35 @@
 namespace Spatie\MixedContentScannerCli\Test;
 
 use PHPUnit\Framework\TestCase;
-use Spatie\MixedContentScanner\MixedContentScanner;
+use Spatie\Snapshots\MatchesSnapshots;
 
 class MixedContentScannerTest extends TestCase
 {
+    use MatchesSnapshots;
+
+    protected $logFile = __DIR__ . '/temp/log.txt';
+
     public function setUp()
     {
         Server::boot();
+
+        $this->createLogFile();
     }
 
     /** @test */
-    public function if_can_find_mixed_content()
+    public function it_can_find_mixed_content()
     {
-        $logger = new MixedContentLogger();
+        exec("./mixed-content-scanner scan http://" . Server::getServerUrl() . " > {$this->logFile}");
 
-        $scanner = new MixedContentScanner($logger);
+        $this->assertMatchesSnapshot(file_get_contents($this->logFile));
+    }
 
-        $scanner->scan('http://'.Server::getServerUrl());
+    protected function createLogFile()
+    {
+        if (file_exists($this->logFile)) {
+            unlink($this->logFile);
+        }
 
-        $logger->assertPageHasMixedContent('/mixedContent');
-
-        $logger->assertPageHasNoMixedContent('/noMixedContent');
+        touch($this->logFile);
     }
 }
