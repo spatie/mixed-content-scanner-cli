@@ -82,6 +82,34 @@ mixed-content-scanner scan https://self-signed.badssl.com/ --verify-ssl
 
 That examples will result in non responding urls because the host does not have a valid ssl certificate
 
+### Filtering and ignoring urls
+
+You can filter which urls are going to be crawled by passing regex to the `filter` and `ignore` options. 
+
+In this example we are only going to crawl pages starting with `/en`.
+
+```bash
+mixed-content-scanner scan https://spatie.be --filter="^\/en"
+```
+
+You can use multiple filters:
+
+```bash
+mixed-content-scanner scan https://spatie.be --filter="^\/en" --filter="^\/nl"
+```
+
+You can also ignore certain urls. Here we are going to ignore all url's that contain the word `opensource`.
+
+```bash
+mixed-content-scanner scan https://spatie.be --ignore="opensource"
+```
+
+Of course you can also combine filters and ignores:
+
+```bash
+mixed-content-scanner scan https://spatie.be --filter="^\/en" --ignore="opensource"
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
