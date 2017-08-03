@@ -15,12 +15,11 @@ mixed-content-scanner scan https://spatie.be
 
 And of course our company site reports no mixed content.
 
-[TO DO: add image]
+![spatie](https://spatie.github.io/mixed-content-scanner-cli/spatie.jpg)
 
 Here's an example of a local test server that does contain some mixed content:
 
-[TO DO: add image]
-
+![mixed](https://spatie.github.io/mixed-content-scanner-cli/mixed.jpg)
 ## Postcardware
 
 You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
