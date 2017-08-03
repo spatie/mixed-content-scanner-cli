@@ -1,6 +1,4 @@
-**WORK IN PROGRESS, DO NOT USE YET**
-
-# A cli tool to check sites for mixed content
+# A CLI tool to check sites for mixed content
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/mixed-content-scanner-cli.svg?style=flat-square)](https://packagist.org/packages/spatie/mixed-content-scanner-cli)
 [![Build Status](https://img.shields.io/travis/spatie/mixed-content-scanner-cli/master.svg?style=flat-square)](https://travis-ci.org/spatie/mixed-content-scanner-cli)
