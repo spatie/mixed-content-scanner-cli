@@ -126,6 +126,116 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
 
+## Additional informations about web application security
+
+The following informations about "Content-Security-Policy" and "Subresource-Integrity" maybe can help you to increase the security of your web application.
+
+### Content-Security-Policy
+
+The new Content-Security-Policy HTTP response header helps you reduce XSS risks on modern browsers by declaring what dynamic resources are allowed to load via a HTTP Header.
+
+Links:
+- [content-security-policy.com](http://content-security-policy.com/)
+- [html5rocks](http://www.html5rocks.com/en/tutorials/security/content-security-policy/)
+- [w3c](https://w3c.github.io/webappsec-csp/)
+- [owasp](https://www.owasp.org/index.php/Content_Security_Policy)
+- [caniuse](http://caniuse.com/#feat=contentsecuritypolicy)
+
+Tools:
+- [SSL Server Test](https://www.ssllabs.com/ssltest/analyze.html)
+- [securityheaders.io](https://securityheaders.io)
+- [SSL Configuration Generator by Mozilla](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
+- [HTTP Observatory by Mozilla](https://observatory.mozilla.org/analyze.html)
+- [CSP Header Generator](http://cspisawesome.com/)
+
+#### Content-Security-Policy - Strict-Transport-Security
+
+If a user types `example.com` in their browser, even if the server
+redirects them to the secure version of the website, that still leaves
+a window of opportunity (the initial HTTP connection) for an attacker
+to downgrade or redirect the request.
+
+Links:
+- [Strict-Transport-Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
+- [caniuse](http://caniuse.com/#search=strict%20transport%20security)
+- [owasp](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet)
+
+example 1: (.htaccess)
+```apache
+# The following header ensures that browser will ONLY connect to your
+# server via HTTPS, regardless of what the users type in the browser's
+# address bar.
+#
+# (!) Remove the `includeSubDomains` optional directive if the website's
+# subdomains are not using HTTPS.
+
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains"
+</IfModule>
+```
+
+example 2: (.htaccess)
+```apache
+# Cache SSL redirection
+#
+# Using this header, any browser that accesses the site over HTTPS will not
+# be able to access the plain HTTP site for one day (86400 seconds).
+# One you begin using this, you should not stop using SSL on your site or
+# else your returning visitors will not be able to access your site at all.
+#
+# (!) Remove the `env=HTTPS` optional directive if you want to force
+# HTTP to HTTPS.
+
+<IfModule mod_headers.c>
+    Header set Strict-Transport-Security "max-age=86400; includeSubDomains" env=HTTPS
+</IfModule>
+```
+
+#### Content-Security-Policy - upgrade-insecure-requests
+
+The HTTP Content-Security-Policy (CSP) upgrade-insecure-requests directive instructs user agents to treat all of a site's insecure URLs (those served over HTTP) as though they have been replaced with secure URLs (those served over HTTPS). This directive is intended for web sites with large numbers of insecure legacy URLs that need to be rewritten.
+
+Links:
+- [w3c](https://w3c.github.io/webappsec/specs/upgrade/)
+- [caniuse](http://caniuse.com/#search=upgrade-insecure-requests)
+- [google chrome example](https://googlechrome.github.io/samples/csp-upgrade-insecure-requests/index.html)
+
+example: (.htaccess)
+```apache
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "upgrade-insecure-requests" env=HTTPS
+</IfModule>
+```
+
+example: (php)
+```php
+header('Content-Security-Policy: upgrade-insecure-requests;');
+```
+
+#### Content-Security-Policy-Report-Only
+
+WARNING: "Report-Only" is only the first step, it does nothing but reporting ... You need to change our application code so we can increase security by disabling 'unsafe-inline' 'unsafe-eval' directives for css and js.
+
+example: (php)
+```php
+header("Content-Security-Policy-Report-Only: script-src 'self'; report-uri /content-security-policy-report.php");
+```
+
+### Subresource Integrity
+
+Subresource Integrity (SRI) is a security feature that enables browsers to verify that files they fetch (for example, from a CDN) are delivered without unexpected manipulation. It works by allowing you to provide a cryptographic hash that a fetched file must match.
+
+If you are e.g. in a public wlan and there is a simple transparent proxy in the background (on the router for example) which replace "http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js", then your browser will cache the replaced js-file and will use it e.g. in your local enviroment or on other sites. Also your js-, css-files from your own website (not only from CDN) can be replaced easely if you are not using SSL (or if the user ignore the red-error-page about the SSL-error).
+
+Links:
+[Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
+[caniuse](http://caniuse.com/#search=subresource-integrity)
+
+example: (html)
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+```
+
 ## Credits
 
 - [Freek Van der Herten](https://github.com/freekmurze)
