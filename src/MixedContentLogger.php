@@ -2,7 +2,7 @@
 
 namespace Spatie\MixedContentScannerCli;
 
-use Spatie\Crawler\Url;
+use Psr\Http\Message\UriInterface;
 use Spatie\MixedContentScanner\MixedContent;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Spatie\MixedContentScanner\MixedContentObserver;
@@ -23,7 +23,7 @@ class MixedContentLogger extends MixedContentObserver
         $this->output = $output;
     }
 
-    public function didNotRespond(Url $crawledUrl)
+    public function didNotRespond(UriInterface $crawledUrl)
     {
         $this->log("{$crawledUrl}: server did not respond when crawling", 'comment');
 
@@ -44,7 +44,7 @@ class MixedContentLogger extends MixedContentObserver
         $this->mixedContent[] = $mixedContent;
     }
 
-    public function noMixedContentFound(Url $url)
+    public function noMixedContentFound(UriInterface $url)
     {
         $this->log("{$url}: ok");
 
