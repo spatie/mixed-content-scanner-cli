@@ -2,7 +2,6 @@
 
 namespace Spatie\MixedContentScannerCli;
 
-use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\UriInterface;
 use Spatie\Crawler\CrawlInternalUrls;
 
