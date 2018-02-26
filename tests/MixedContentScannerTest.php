@@ -21,7 +21,7 @@ class MixedContentScannerTest extends TestCase
     /** @test */
     public function it_can_find_mixed_content()
     {
-        exec('./mixed-content-scanner scan http://'.Server::getServerUrl()." > {$this->logFile}");
+        $this->performScan('http://'.Server::getServerUrl());
 
         $this->assertMatchesSnapshot(file_get_contents($this->logFile));
     }
@@ -29,7 +29,7 @@ class MixedContentScannerTest extends TestCase
     /** @test */
     public function it_will_not_verify_ssl_by_default()
     {
-        exec("./mixed-content-scanner scan https://self-signed.badssl.com/ > {$this->logFile}");
+        $this->performScan('https://self-signed.badssl.com/');
 
         $this->assertLogContains('Found 1 pages without mixed content');
     }
@@ -37,7 +37,7 @@ class MixedContentScannerTest extends TestCase
     /** @test */
     public function it_has_an_option_to_enable_ssl_verification()
     {
-        exec("./mixed-content-scanner scan --verify-ssl https://self-signed.badssl.com/ > {$this->logFile}");
+        $this->performScan('--verify-ssl https://self-signed.badssl.com/');
 
         $this->assertLogContains('Found 1 non responsive url(');
     }
@@ -45,9 +45,14 @@ class MixedContentScannerTest extends TestCase
     /** @test */
     public function it_can_ignore_links_with_the_ignore_option()
     {
-        exec('./mixed-content-scanner scan http://'.Server::getServerUrl()."ignore --ignore=replytocom > {$this->logFile}");
+        $this->performScan('http://'.Server::getServerUrl('ignore') . ' --ignore=replytocom');
 
         $this->assertMatchesSnapshot(file_get_contents($this->logFile));
+    }
+
+    protected function performScan(?string $arguments = '')
+    {
+        exec("./mixed-content-scanner scan {$arguments} > {$this->logFile}");
     }
 
     protected function createLogFile()
