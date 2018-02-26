@@ -42,6 +42,14 @@ class MixedContentScannerTest extends TestCase
         $this->assertLogContains('Found 1 non responsive url(');
     }
 
+    /** @test */
+    public function it_can_ignore_links_with_the_ignore_option()
+    {
+        exec('./mixed-content-scanner scan http://'.Server::getServerUrl()."ignore --ignore=replytocom > {$this->logFile}");
+
+        $this->assertMatchesSnapshot(file_get_contents($this->logFile));
+    }
+
     protected function createLogFile()
     {
         if (file_exists($this->logFile)) {
