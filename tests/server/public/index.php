@@ -18,6 +18,10 @@ $app->get('/noMixedContent', function () {
     return view('noMixedContent');
 });
 
+$app->get('/ignore', function () {
+    return view('ignore');
+});
+
 $app->get('noResponse', function () {
     die();
 });
