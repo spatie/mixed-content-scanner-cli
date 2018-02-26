@@ -45,7 +45,7 @@ class MixedContentScannerTest extends TestCase
     /** @test */
     public function it_can_ignore_links_with_the_ignore_option()
     {
-        exec('./mixed-content-scanner scan http://'.Server::getServerUrl()."/ignore --ignore=replytocom > {$this->logFile}");
+        exec('./mixed-content-scanner scan http://'.Server::getServerUrl()."ignore --ignore=replytocom > {$this->logFile}");
 
         $this->assertMatchesSnapshot(file_get_contents($this->logFile));
     }
