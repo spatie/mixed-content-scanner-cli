@@ -1,4 +1,6 @@
-<?php return '
+<?php
+
+return '
 
 Start scanning http://localhost:9000/ignore for mixed content
 =============================================================
