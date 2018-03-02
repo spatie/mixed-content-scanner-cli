@@ -23,7 +23,10 @@ class MixedContentScannerTest extends TestCase
     {
         $this->performScan('http://'.Server::getServerUrl());
 
-        $this->assertMatchesSnapshot(file_get_contents($this->logFile));
+        $log = file_get_contents($this->logFile);
+
+        $this->assertContains('http://localhost:9000/mixedContent: found mixed content', $log);
+        $this->assertContains('Found 1 pieces of mixed content', $log);
     }
 
     /** @test */

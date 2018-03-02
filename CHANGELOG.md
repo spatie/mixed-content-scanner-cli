@@ -2,6 +2,10 @@
 
 All notable changes to `mixed-content-scanner-cli` will be documented in this file
 
+## 1.1.2 - 2018-03-02
+
+- update `spatie/mixed-content-scanner` to 3.0
+
 ## 1.1.1 - 2018-02-26
 
 - support `--ignore` and `--filter` for whole URL (#13)

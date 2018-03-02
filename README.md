@@ -1,3 +1,4 @@
+
 # A CLI tool to check sites for mixed content
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/mixed-content-scanner-cli.svg?style=flat-square)](https://packagist.org/packages/spatie/mixed-content-scanner-cli)

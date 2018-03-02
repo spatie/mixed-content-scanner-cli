@@ -2,6 +2,7 @@
 
 namespace Spatie\MixedContentScannerCli;
 
+use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\UriInterface;
 use Spatie\MixedContentScanner\MixedContent;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -49,6 +50,14 @@ class MixedContentLogger extends MixedContentObserver
         $this->log("{$url}: ok");
 
         $this->urlsWithoutMixedContent[] = $url;
+    }
+
+    public function crawlFailed(
+        UriInterface $url,
+        RequestException $requestException,
+        ?UriInterface $foundOnUrl = null
+    ) {
+        $this->didNotRespond($url);
     }
 
     public function finishedCrawling()
