@@ -2,6 +2,10 @@
 
 All notable changes to `mixed-content-scanner-cli` will be documented in this file
 
+## 1.2.0 - 2018-03-22
+
+- Add `--ignore-robots` option.
+
 ## 1.1.2 - 2018-03-02
 
 - update `spatie/mixed-content-scanner` to 3.0

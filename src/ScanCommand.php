@@ -3,6 +3,7 @@
 namespace Spatie\MixedContentScannerCli;
 
 use GuzzleHttp\RequestOptions;
+use Spatie\Crawler\Crawler;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -21,6 +22,7 @@ class ScanCommand extends Command
             ->addArgument('url', InputArgument::REQUIRED, 'Which argument do you want to scan')
             ->addOption('filter', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'urls whose path pass the regex will be scanned')
             ->addOption('ignore', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'urls whose path pass the regex will not be scanned')
+            ->addOption('ignore-robots', null, InputOption::VALUE_NONE, 'Ignore robots.txt, robots meta tags and -headers.')
             ->addOption('verify-ssl', null, InputOption::VALUE_NONE, 'Verify the craweld urls have a valid certificate. If they do not an empty response will be the result of the crawl');
     }
 
@@ -40,7 +42,14 @@ class ScanCommand extends Command
             $input->getOption('ignore')
         );
 
+        $ignoreRobots = $input->getOption('ignore-robots');
+
         (new MixedContentScanner($mixedContentLogger))
+            ->configureCrawler(function (Crawler $crawler) use ($ignoreRobots) {
+                if ($ignoreRobots) {
+                    $crawler->ignoreRobots();
+                }
+            })
             ->setCrawlProfile($crawlProfile)
             ->scan($scanUrl, $this->getClientOptions($input));
     }

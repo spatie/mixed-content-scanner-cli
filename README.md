@@ -100,6 +100,14 @@ Of course you can also combine filters and ignores:
 mixed-content-scanner scan https://spatie.be --filter="^\/en" --ignore="opensource"
 ```
 
+### Ignoring robots
+
+By default, the crawler will respect robots data. You can ignore them though with the `--ignore-robots option`.
+
+```bash
+mixed-content-scanner scan https://example.com --ignore-robots
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
