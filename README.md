@@ -30,6 +30,15 @@ You can install the package via composer:
 composer global require spatie/mixed-content-scanner-cli
 ```
 
+### Installation on Ubuntu 18.04
+
+```bash
+sudo apt update
+sudo apt install composer php-xml zip -y
+composer global require spatie/mixed-content-scanner-cli
+~/.config/composer/vendor/spatie/mixed-content-scanner-cli/mixed-content-scanner scan https://example.com
+```
+
 ## How it works under the hood
 
 When scanning a site, the tool will crawl every page. On all html retrieved, these elements and attributes will be checked:
@@ -74,7 +83,7 @@ That examples will result in non responding urls because the host does not have 
 
 ### Filtering and ignoring urls
 
-You can filter which urls are going to be crawled by passing regex to the `filter` and `ignore` options. 
+You can filter which urls are going to be crawled by passing regex to the `filter` and `ignore` options.
 
 In this example we are only going to crawl pages starting with `/en`.
 
@@ -145,7 +154,7 @@ The scanner is inspired by [mixed-content-scan](https://github.com/bramus/mixed-
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
 
-Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie).
 All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
