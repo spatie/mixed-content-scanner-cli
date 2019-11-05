@@ -109,7 +109,7 @@ mixed-content-scanner scan https://example.com --ignore-robots
 ```
 
 ### Custom User agent
-By default, the crawler uses '' as the user agent. You can override this value with the `--user-agent option`.
+By default, the crawler uses the underlying guzzle client for the user agent. You can override this value with the `--user-agent option`.
 ```bash
 mixed-content-scanner scan https://example.com --user-agent='MyCustomCrawler'
 ```
