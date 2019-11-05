@@ -108,6 +108,12 @@ By default, the crawler will respect robots data. You can ignore them though wit
 mixed-content-scanner scan https://example.com --ignore-robots
 ```
 
+### Custom User agent
+By default, the crawler uses '' as the user agent. You can override this value with the `--user-agent option`.
+```bash
+mixed-content-scanner scan https://example.com --user-agent='MyCustomCrawler'
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.

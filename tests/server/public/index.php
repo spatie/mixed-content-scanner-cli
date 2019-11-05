@@ -22,6 +22,11 @@ $app->get('/ignore', function () {
     return view('ignore');
 });
 
+$app->get('/userAgent', function () {
+    file_put_contents( dirname(dirname(__DIR__)) . '/temp/agent.txt', $_SERVER['HTTP_USER_AGENT']);
+    return view('userAgent');
+});
+
 $app->get('noResponse', function () {
     die();
 });
