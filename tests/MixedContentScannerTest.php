@@ -10,7 +10,7 @@ class MixedContentScannerTest extends TestCase
     use MatchesSnapshots;
 
     protected $logFile = __DIR__.'/temp/log.txt';
-    
+
     protected $userAgentLogFile = __DIR__.'/temp/agent.txt';
 
     public function setUp()
