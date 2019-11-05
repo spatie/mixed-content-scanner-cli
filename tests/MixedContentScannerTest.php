@@ -59,6 +59,7 @@ class MixedContentScannerTest extends TestCase
     public function it_can_pass_a_custom_user_agent()
     {
         $userAgent = 'My-custom-user-agent-string';
+        
         $this->performScan('http://' . Server::getServerUrl('userAgent')." --user-agent={$userAgent}");
 
         $this->assertEquals(file_get_contents($this->userAgentLogFile), $userAgent);
