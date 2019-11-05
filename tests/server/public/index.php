@@ -23,7 +23,7 @@ $app->get('/ignore', function () {
 });
 
 $app->get('/userAgent', function () {
-    file_put_contents( dirname(dirname(__DIR__)) . '/temp/agent.txt', $_SERVER['HTTP_USER_AGENT']);
+    file_put_contents( dirname(__DIR__, 2).'/temp/agent.txt', $_SERVER['HTTP_USER_AGENT']);
     return view('userAgent');
 });
 
