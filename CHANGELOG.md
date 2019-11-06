@@ -3,7 +3,7 @@
 All notable changes to `mixed-content-scanner-cli` will be documented in this file
 
 
-## 1.2.1 - 2019-11-05
+## 1.3.0 - 2019-11-05
 
 - Add `--user-agent` option.
 
