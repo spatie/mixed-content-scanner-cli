@@ -11,11 +11,13 @@ class MixedContentScannerTest extends TestCase
 
     protected $logFile = __DIR__.'/temp/log.txt';
 
+    protected $userAgentLogFile = __DIR__.'/temp/agent.txt';
+
     public function setUp()
     {
         Server::boot();
 
-        $this->createLogFile();
+        $this->createLogFiles();
     }
 
     /** @test */
@@ -53,18 +55,35 @@ class MixedContentScannerTest extends TestCase
         $this->assertMatchesSnapshot(file_get_contents($this->logFile));
     }
 
+    /** @test */
+    public function it_can_pass_a_custom_user_agent()
+    {
+        $userAgent = 'My-custom-user-agent-string';
+
+        $this->performScan('http://'.Server::getServerUrl('userAgent')." --user-agent={$userAgent}");
+
+        $this->assertEquals(file_get_contents($this->userAgentLogFile), $userAgent);
+    }
+
     protected function performScan(?string $arguments = '')
     {
         exec("./mixed-content-scanner scan {$arguments} > {$this->logFile}");
     }
 
-    protected function createLogFile()
+    protected function createLogFile($file)
     {
-        if (file_exists($this->logFile)) {
-            unlink($this->logFile);
+        if (file_exists($file)) {
+            unlink($file);
         }
 
-        touch($this->logFile);
+        touch($file);
+    }
+
+    protected function createLogFiles()
+    {
+        foreach ([$this->logFile, $this->userAgentLogFile] as $file) {
+            $this->createLogFile($file);
+        }
     }
 
     public function assertLogContains($expectedString)

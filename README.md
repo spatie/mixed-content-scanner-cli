@@ -102,10 +102,16 @@ mixed-content-scanner scan https://spatie.be --filter="^\/en" --ignore="opensour
 
 ### Ignoring robots
 
-By default, the crawler will respect robots data. You can ignore them though with the `--ignore-robots option`.
+By default, the crawler will respect robots data. You can ignore them though with the `--ignore-robots` option.
 
 ```bash
 mixed-content-scanner scan https://example.com --ignore-robots
+```
+
+### Custom User agent
+By default, the crawler uses the underlying guzzle client for the user agent. You can override this value with the `--user-agent` option.
+```bash
+mixed-content-scanner scan https://example.com --user-agent='MyCustomCrawler'
 ```
 
 ## Changelog

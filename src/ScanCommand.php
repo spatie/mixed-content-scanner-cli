@@ -4,13 +4,13 @@ namespace Spatie\MixedContentScannerCli;
 
 use GuzzleHttp\RequestOptions;
 use Spatie\Crawler\Crawler;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Console\Input\InputArgument;
 use Spatie\MixedContentScanner\MixedContentScanner;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class ScanCommand extends Command
 {
@@ -23,7 +23,8 @@ class ScanCommand extends Command
             ->addOption('filter', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'urls whose path pass the regex will be scanned')
             ->addOption('ignore', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'urls whose path pass the regex will not be scanned')
             ->addOption('ignore-robots', null, InputOption::VALUE_NONE, 'Ignore robots.txt, robots meta tags and -headers.')
-            ->addOption('verify-ssl', null, InputOption::VALUE_NONE, 'Verify the craweld urls have a valid certificate. If they do not an empty response will be the result of the crawl');
+            ->addOption('verify-ssl', null, InputOption::VALUE_NONE, 'Verify the craweld urls have a valid certificate. If they do not an empty response will be the result of the crawl')
+            ->addOption('user-agent', null, InputOption::VALUE_REQUIRED, 'User agent string to use for requests');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -43,11 +44,15 @@ class ScanCommand extends Command
         );
 
         $ignoreRobots = $input->getOption('ignore-robots');
+        $userAgent = $input->getOption('user-agent');
 
         (new MixedContentScanner($mixedContentLogger))
-            ->configureCrawler(function (Crawler $crawler) use ($ignoreRobots) {
+            ->configureCrawler(function (Crawler $crawler) use ($ignoreRobots, $userAgent) {
                 if ($ignoreRobots) {
                     $crawler->ignoreRobots();
+                }
+                if ($userAgent) {
+                    $crawler->setUserAgent($userAgent);
                 }
             })
             ->setCrawlProfile($crawlProfile)
