@@ -21,6 +21,7 @@
     ],
     "require": {
         "php": "^7.1",
+        "spatie/crawler": "^4.3",
         "spatie/mixed-content-scanner": "^3.1",
         "symfony/console": "^4.0",
         "symfony/var-dumper": "^4.0"
