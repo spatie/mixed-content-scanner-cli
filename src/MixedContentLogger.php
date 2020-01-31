@@ -2,11 +2,11 @@
 
 namespace Spatie\MixedContentScannerCli;
 
-use Psr\Http\Message\UriInterface;
 use GuzzleHttp\Exception\RequestException;
+use Psr\Http\Message\UriInterface;
 use Spatie\MixedContentScanner\MixedContent;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Spatie\MixedContentScanner\MixedContentObserver;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class MixedContentLogger extends MixedContentObserver
 {
