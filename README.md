@@ -24,7 +24,7 @@ Here's an example of a local test server that does contain some mixed content:
 
 ## Support us
 
-[![Image](https://github-ads.s3.eu-central-1.amazonaws.com/mixed-content-scanner-cli.jpg)](https://spatie.be/github-ad-click/mixed-content-scanner-cli)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/mixed-content-scanner-cli.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/mixed-content-scanner-cli)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
