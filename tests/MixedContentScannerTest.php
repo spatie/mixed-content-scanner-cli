@@ -13,7 +13,7 @@ class MixedContentScannerTest extends TestCase
 
     protected $userAgentLogFile = __DIR__.'/temp/agent.txt';
 
-    public function setUp()
+    protected function setUp()
     {
         Server::boot();
 
