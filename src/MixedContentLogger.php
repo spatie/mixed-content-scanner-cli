@@ -57,7 +57,7 @@ class MixedContentLogger extends MixedContentObserver
         UriInterface $url,
         RequestException $requestException,
         ?UriInterface $foundOnUrl = null
-    ):void {
+    ): void {
         $this->didNotRespond($url);
     }
 
