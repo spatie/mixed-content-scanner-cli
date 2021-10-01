@@ -44,8 +44,7 @@ class MixedContentLogger extends MixedContentObserver
 
         $this->mixedContent[] = $mixedContent;
     }
-
-
+    
     public function noMixedContentFound(UriInterface $url): void
     {
         $this->log("{$url}: ok");
