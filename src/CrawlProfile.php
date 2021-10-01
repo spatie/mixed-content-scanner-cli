@@ -3,11 +3,11 @@
 namespace Spatie\MixedContentScannerCli;
 
 use Psr\Http\Message\UriInterface;
-use Spatie\Crawler\CrawlInternalUrls;
+use Spatie\Crawler\CrawlProfiles\CrawlInternalUrls;
 
 class CrawlProfile extends CrawlInternalUrls
 {
-    protected $baseUrl = '';
+    protected mixed $baseUrl = '';
 
     protected $filters = [];
 
