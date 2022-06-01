@@ -45,7 +45,7 @@ class MixedContentLogger extends MixedContentObserver
         $this->mixedContent[] = $mixedContent;
     }
 
-    public function noMixedContentFound(UriInterface $url)
+    public function noMixedContentFound(UriInterface $url): void
     {
         $this->log("{$url}: ok");
 
@@ -56,11 +56,11 @@ class MixedContentLogger extends MixedContentObserver
         UriInterface $url,
         RequestException $requestException,
         ?UriInterface $foundOnUrl = null
-    ) {
+    ): void {
         $this->didNotRespond($url);
     }
 
-    public function finishedCrawling()
+    public function finishedCrawling(): void
     {
         $this->output->title('Scan results');
 

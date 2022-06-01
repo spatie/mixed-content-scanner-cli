@@ -9,5 +9,10 @@
         "laravel/lumen-framework": "5.4.*"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
 }
