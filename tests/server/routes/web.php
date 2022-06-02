@@ -40,7 +40,7 @@ $router->get('/userAgent', function () {
 });
 
 $router->get('noResponse', function () {
-    die();
+    exit();
 });
 
 $router->get('redirect', function () {
