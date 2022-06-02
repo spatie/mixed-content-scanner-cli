@@ -28,10 +28,7 @@ class Server
 
         $startServerCommand = 'php -S '.static::getServerUrl().' -t ./tests/server/public > /dev/null 2>&1 & echo $!';
 
-        // dd($startServerCommand);
-
         $pid = exec($startServerCommand);
-        // dd('ho2i');
 
         while (! static::serverHasBooted()) {
             usleep(1000);
