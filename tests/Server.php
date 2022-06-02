@@ -28,7 +28,10 @@ class Server
 
         $startServerCommand = 'php -S '.static::getServerUrl().' -t ./tests/server/public > /dev/null 2>&1 & echo $!';
 
+        // dd($startServerCommand);
+
         $pid = exec($startServerCommand);
+        // dd('ho2i');
 
         while (! static::serverHasBooted()) {
             usleep(1000);
@@ -41,7 +44,7 @@ class Server
 
     public static function getServerUrl(string $endPoint = ''): string
     {
-        return 'localhost:'.getenv('TEST_SERVER_PORT').'/'.$endPoint;
+        return 'localhost:'.getenv('TEST_SERVER_PORT').($endPoint ? '/'.$endPoint : '');
     }
 
     public static function serverHasBooted(): bool
