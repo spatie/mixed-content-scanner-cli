@@ -75,7 +75,7 @@ class MixedContentLogger extends MixedContentObserver
                 return "{$foundOnUrl}: found mixed content on element {$elementName} with url {$mixedContentUrl}";
             }, $this->mixedContent);
 
-            $this->output->listing($mixedContentMessages, 'error');
+            $this->output->listing($mixedContentMessages);
         }
 
         if (count($this->nonResponsiveUrls)) {
