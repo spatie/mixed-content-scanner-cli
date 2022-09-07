@@ -2,6 +2,22 @@
 
 All notable changes to `mixed-content-scanner-cli` will be documented in this file
 
+## 1.4.0 - 2022-09-07
+
+- 
+
+### What's Changed
+
+- Apply fixes from StyleCI by @freekmurze in https://github.com/spatie/mixed-content-scanner-cli/pull/22
+- Improve PHPUnit fixture by @peter279k in https://github.com/spatie/mixed-content-scanner-cli/pull/24
+- Update dependencies by @mrk-j in https://github.com/spatie/mixed-content-scanner-cli/pull/31
+
+### New Contributors
+
+- @peter279k made their first contribution in https://github.com/spatie/mixed-content-scanner-cli/pull/24
+- @mrk-j made their first contribution in https://github.com/spatie/mixed-content-scanner-cli/pull/31
+
+**Full Changelog**: https://github.com/spatie/mixed-content-scanner-cli/compare/1.3.0...1.4.0
 
 ## 1.3.0 - 2019-11-05
 
