@@ -13,7 +13,7 @@ class MixedContentScannerTest extends TestCase
 
     protected $userAgentLogFile = __DIR__.'/temp/agent.txt';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         Server::boot();
 
@@ -23,12 +23,10 @@ class MixedContentScannerTest extends TestCase
     /** @test */
     public function it_can_find_mixed_content()
     {
-        $this->performScan('http://'.Server::getServerUrl());
+        $this->performScan('http://'.Server::getServerUrl('mixedContent'));
 
-        $log = file_get_contents($this->logFile);
-
-        $this->assertContains('http://localhost:9000/mixedContent: found mixed content', $log);
-        $this->assertContains('Found 1 pieces of mixed content', $log);
+        $this->assertLogContains('http://localhost:9000/mixedContent: found mixed content');
+        $this->assertLogContains('Found 1 pieces of mixed content');
     }
 
     /** @test */
@@ -90,6 +88,6 @@ class MixedContentScannerTest extends TestCase
     {
         $logContents = file_get_contents($this->logFile);
 
-        $this->assertContains($expectedString, file_get_contents($this->logFile), "Failed asserting that `{$logContents}` contains the expected string `{$expectedString}`");
+        $this->assertStringContainsString($expectedString, $logContents, "Failed asserting that `{$logContents}` contains the expected string `{$expectedString}`");
     }
 }

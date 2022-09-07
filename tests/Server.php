@@ -41,7 +41,7 @@ class Server
 
     public static function getServerUrl(string $endPoint = ''): string
     {
-        return 'localhost:'.getenv('TEST_SERVER_PORT').'/'.$endPoint;
+        return 'localhost:'.getenv('TEST_SERVER_PORT').($endPoint ? '/'.$endPoint : '');
     }
 
     public static function serverHasBooted(): bool

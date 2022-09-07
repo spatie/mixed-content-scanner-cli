@@ -57,6 +57,8 @@ class ScanCommand extends Command
             })
             ->setCrawlProfile($crawlProfile)
             ->scan($scanUrl, $this->getClientOptions($input));
+
+        return Command::SUCCESS;
     }
 
     protected function getClientOptions(InputInterface $input): array

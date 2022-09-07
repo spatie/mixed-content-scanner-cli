@@ -1,2 +1,5 @@
-vendor
-storage/logs
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.phpunit.result.cache
